@@ -7,7 +7,8 @@
   "module": "./dist/bundle.mjs",
   "files": [
     "dist",
-    "src"
+    "src",
+    "img"
   ],
   "scripts": {
     "dev": "vite",

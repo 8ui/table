@@ -1,5 +1,5 @@
-var B = Object.defineProperty;
-var R = (o, t, e) => t in o ? B(o, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : o[t] = e;
+var S = Object.defineProperty;
+var R = (o, t, e) => t in o ? S(o, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : o[t] = e;
 var l = (o, t, e) => R(o, typeof t != "symbol" ? t + "" : t, e);
 function w(o) {
   return o != null;
@@ -30,13 +30,13 @@ function I(o, t, e) {
   let i;
   return t - o.x1 >= -1 && t - o.x1 <= 11 && (i = "left"), o.x2 - t >= -1 && o.x2 - t <= 11 && (i = "right"), e - o.y1 >= -1 && e - o.y1 <= 11 && (i = "top"), o.y2 - e >= -1 && o.y2 - e <= 11 && (i = "bottom"), i;
 }
-const y = {
+const L = {
   resizedColumn: "tc-table__resize_column"
 };
-class O {
+class V {
   constructor(t) {
     l(this, "getIndex", (t) => {
-      const e = this.table.body.querySelectorAll(`.${y.resizedColumn}`);
+      const e = this.table.body.querySelectorAll(`.${L.resizedColumn}`);
       for (let i = 0; i < e.length; i += 1)
         if (e[i] === t.target)
           return i;
@@ -74,8 +74,8 @@ class O {
     document.addEventListener("mousemove", this.onDrag, !1), document.addEventListener("mouseup", this.onDragEnd, !1);
   }
   createElem(t) {
-    if (!t.querySelector(`.${y.resizedColumn}`)) {
-      const e = r("div", [y.resizedColumn]);
+    if (!t.querySelector(`.${L.resizedColumn}`)) {
+      const e = r("div", [L.resizedColumn]);
       e.addEventListener("mousedown", this.onDragStart, !1), t.appendChild(e);
     }
   }
@@ -86,7 +86,7 @@ const u = {
   trRemove: "tc-table__tr_remove",
   tdRemove: "tc-table__td_remove"
 };
-class z {
+class H {
   constructor(t) {
     l(this, "getDirection", (t) => t.target.classList.contains(u.selectLineCol) ? 0 : 1);
     l(this, "onMouseEnter", (t) => {
@@ -123,18 +123,18 @@ class z {
     }
   }
 }
-const L = {
+const y = {
   addColumn: "tc-table__add_column",
   addRow: "tc-table__add_row"
 };
-class D {
+class O {
   constructor(t) {
     /**
      * @private
      * @returns {HTMLElement} - the create col/row
      */
     l(this, "createElem", (t, e = 0) => {
-      const i = [L.addColumn, L.addRow][e];
+      const i = [y.addColumn, y.addRow][e];
       if (!t.querySelector(`.${i}`)) {
         const s = r("div");
         s.addEventListener("click", this.onClick);
@@ -145,7 +145,7 @@ class D {
         return t.appendChild(n), n;
       }
     });
-    l(this, "getDirection", (t) => t.classList.contains(L.addColumn) ? 0 : 1);
+    l(this, "getDirection", (t) => t.classList.contains(y.addColumn) ? 0 : 1);
     l(this, "getIndex", (t) => {
       const e = this.table.body.querySelectorAll(`.${t.className}`);
       for (let i = 0; i < e.length; i += 1)
@@ -160,14 +160,14 @@ class D {
     this.table = t;
   }
 }
-const V = require("./img/image-upload.svg"), T = require("./img/image-delete.svg"), x = "/upload_image", g = {
+const x = "data:image/svg+xml,%3csvg%20viewBox='0%200%2024%2024'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M19%205V19H5V5H19ZM19%203H5C3.9%203%203%203.9%203%205V19C3%2020.1%203.9%2021%205%2021H19C20.1%2021%2021%2020.1%2021%2019V5C21%203.9%2020.1%203%2019%203ZM14.14%2011.86L11.14%2015.73L9%2013.14L6%2017H18L14.14%2011.86Z'%20/%3e%3c/svg%3e", z = "data:image/svg+xml,%3csvg%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M19%205V16.17L21%2018.17V5C21%203.9%2020.1%203%2019%203H5.83L7.83%205H19ZM2.81%202.81L1.39%204.22L3%205.83V19C3%2020.1%203.9%2021%205%2021H18.17L19.78%2022.61L21.19%2021.2L2.81%202.81ZM5%2019V7.83L12.07%2014.9L11.25%2016L9%2013L6%2017H14.17L16.17%2019H5Z'/%3e%3c/svg%3e", M = "/upload_image", g = {
   imageUploadButton: "tc-table__image_upload_button",
   imageUploadButtonVisible: "tc-table__image_upload_button_visible",
   image: "tc-table__image",
   wrapper: "tc-table__wrapper_image",
   buttonDelete: "tc-table__wrapper_image_button"
 };
-class H {
+class D {
   constructor(t) {
     /**
      * @private
@@ -176,10 +176,12 @@ class H {
     l(this, "createElem", (t) => {
       if (!t.querySelector(`.${g.imageUploadButton}`)) {
         const e = r("input", [], { type: "file" }), i = r("span");
-        return i.innerHTML = V, this.Button = r("label", [g.imageUploadButton], { title: this.buttonText }, [
-          e,
-          i
-        ]), e.addEventListener("change", this.onChange), t.appendChild(this.Button), this.Button;
+        return i.innerHTML = x, this.Button = r(
+          "label",
+          [g.imageUploadButton],
+          { title: this.buttonText },
+          [e, i]
+        ), e.addEventListener("change", this.onChange), t.appendChild(this.Button), this.Button;
       }
     });
     l(this, "onToggle", (t) => {
@@ -193,7 +195,7 @@ class H {
         i.replaceWith(s);
       else {
         const n = r("div");
-        n.innerHTML = T;
+        n.innerHTML = z;
         const m = r("div", [g.buttonDelete], null, [n]), d = r("div", [g.wrapper], null, [s, m]);
         m.addEventListener("click", this.removeImage), i.replaceWith(d);
       }
@@ -208,7 +210,7 @@ class H {
     });
     l(this, "onUploadImage", async () => {
       const t = new FormData();
-      return t.append("upfile", this.image), await fetch(x, {
+      return t.append("upfile", this.image), await fetch(M, {
         method: "POST",
         body: t
       }).then((i) => i.json());
@@ -229,7 +231,7 @@ const a = {
   addColumnButton: "tc-table__add_column_button",
   addRowButton: "tc-table__add_row_button"
 };
-let k = class {
+let T = class {
   /**
    * Creates
    *
@@ -258,7 +260,7 @@ let k = class {
           s[n].remove();
       });
     });
-    this.readOnly = t, this._numberOfColumns = 0, this._numberOfRows = 0, this.resize = new O(this), this.selectLine = new z(this), this.createLine = new D(this), this.imageUpload = new H(this), this._element = this._createTableWrapper(), this._table = this._element.querySelector("table"), this.colgroup = this._table.querySelector("colgroup"), this.readOnly || this._hangEvents();
+    this.readOnly = t, this._numberOfColumns = 0, this._numberOfRows = 0, this.resize = new V(this), this.selectLine = new H(this), this.createLine = new O(this), this.imageUpload = new D(this), this._element = this._createTableWrapper(), this._table = this._element.querySelector("table"), this.colgroup = this._table.querySelector("colgroup"), this.readOnly || this._hangEvents();
   }
   columnSizeReCalc() {
     const t = this.colgroup.children;
@@ -449,7 +451,7 @@ let k = class {
     }));
   }
 };
-class M {
+class k {
   /**
    * Creates
    * @param {TableData} data - previously saved data for insert in table
@@ -464,7 +466,7 @@ class M {
       withBorder: "tc-table__with_border"
     };
     try {
-      this._table = new k(s);
+      this._table = new T(s);
       const n = this._resizeTable(t, e);
       this._fillTable(t, n);
     } catch (n) {
@@ -513,8 +515,8 @@ class M {
       this._table.addRow(_);
     for (let _ = 0; _ < E; _++)
       this._table.addColumn(_);
-    return h && h.sizes && h.sizes.forEach((_, S) => {
-      this._table.colgroup.children[S] && (this._table.colgroup.children[S].style.width = `${_ * 100}%`);
+    return h && h.sizes && h.sizes.forEach((_, B) => {
+      this._table.colgroup.children[B] && (this._table.colgroup.children[B].style.width = `${_ * 100}%`);
     }), this._table.htmlElement.classList.toggle(
       this._CSS.withBorder,
       (h == null ? void 0 : h.withBorder) === void 0 ? !0 : h == null ? void 0 : h.withBorder
@@ -574,7 +576,7 @@ class M {
     i === 1 && (i = e.sectionRowIndex + 1), this._table.addRow(i).cells[0].click();
   }
 }
-const $ = "data:image/svg+xml,%3csvg%20width='18'%20height='14'%3e%3cpath%20d='M2.833%208v1.95a1.7%201.7%200%200%200%201.7%201.7h3.45V8h-5.15zm0-2h5.15V2.35h-3.45a1.7%201.7%200%200%200-1.7%201.7V6zm12.3%202h-5.15v3.65h3.45a1.7%201.7%200%200%200%201.7-1.7V8zm0-2V4.05a1.7%201.7%200%200%200-1.7-1.7h-3.45V6h5.15zM4.533.1h8.9a3.95%203.95%200%200%201%203.95%203.95v5.9a3.95%203.95%200%200%201-3.95%203.95h-8.9a3.95%203.95%200%200%201-3.95-3.95v-5.9A3.95%203.95%200%200%201%204.533.1z'/%3e%3c/svg%3e", q = "data:image/svg+xml,%3csvg%20width='18'%20height='18'%20viewBox='0%200%2018%2018'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M0%202V8V10V16V18H2H8H10H16H18V16V10V8V2V0H16H10H8H2H0V2ZM8%202L2%202V8H8L8%202ZM8%2010H2V16H8L8%2010ZM10%2016V10H16V16H10ZM10%208V2L16%202V8H10Z'/%3e%3c/svg%3e";
+const $ = "data:image/svg+xml,%3csvg%20width='18'%20height='14'%3e%3cpath%20d='M2.833%208v1.95a1.7%201.7%200%200%200%201.7%201.7h3.45V8h-5.15zm0-2h5.15V2.35h-3.45a1.7%201.7%200%200%200-1.7%201.7V6zm12.3%202h-5.15v3.65h3.45a1.7%201.7%200%200%200%201.7-1.7V8zm0-2V4.05a1.7%201.7%200%200%200-1.7-1.7h-3.45V6h5.15zM4.533.1h8.9a3.95%203.95%200%200%201%203.95%203.95v5.9a3.95%203.95%200%200%201-3.95%203.95h-8.9a3.95%203.95%200%200%201-3.95-3.95v-5.9A3.95%203.95%200%200%201%204.533.1z'/%3e%3c/svg%3e", F = "data:image/svg+xml,%3csvg%20width='18'%20height='18'%20viewBox='0%200%2018%2018'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M0%202V8V10V16V18H2H8H10H16H18V16V10V8V2V0H16H10H8H2H0V2ZM8%202L2%202V8H8L8%202ZM8%2010H2V16H8L8%2010ZM10%2016V10H16V16H10ZM10%208V2L16%202V8H10Z'/%3e%3c/svg%3e";
 class U {
   /**
    * Render plugin`s main Element and fill it with saved data
@@ -595,7 +597,7 @@ class U {
       );
     });
     var n;
-    this.api = i, this.readOnly = s, this._tableConstructor = new M(t, e, i, s), this._CSS = {
+    this.api = i, this.readOnly = s, this._tableConstructor = new k(t, e, i, s), this._CSS = {
       input: "tc-table__inp",
       settingsButton: this.api.styles.settingsButton,
       settingsButtonActive: this.api.styles.settingsButtonActive
@@ -706,7 +708,7 @@ class U {
    */
   renderSettings() {
     const t = document.createElement("DIV"), e = document.createElement("SPAN");
-    return e.classList.add(this._CSS.settingsButton), this.borderActive && e.classList.add(this._CSS.settingsButtonActive), e.innerHTML = q, e.dataset.active = this.borderActive, e.addEventListener("click", () => {
+    return e.classList.add(this._CSS.settingsButton), this.borderActive && e.classList.add(this._CSS.settingsButtonActive), e.innerHTML = F, e.dataset.active = this.borderActive, e.addEventListener("click", () => {
       this.toggleBorder();
     }), t.appendChild(e), this.toggleBorderButton = e, t;
   }

@@ -26,10 +26,19 @@ export default defineConfig({
         globals: {
           "@editorjs/editorjs": "EditorJS",
         },
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split(".");
+          const extType = info[info.length - 1];
+          if (/\.(png|jpe?g|gif|svg|webp)$/i.test(assetInfo.name)) {
+            return `img/[name][extname]`;
+          }
+          return `assets/[name][extname]`;
+        },
       },
     },
     sourcemap: true,
     assetsInlineLimit: 0,
+    copyPublicDir: true,
   },
   resolve: {
     alias: {
@@ -48,13 +57,6 @@ export default defineConfig({
           });
           proxy.on("proxyReq", (proxyReq, req, _res) => {
             console.log("Sending Request to the Target:", req.method, req.url);
-          });
-          proxy.on("proxyRes", (proxyRes, req, _res) => {
-            console.log(
-              "Received Response from the Target:",
-              proxyRes.statusCode,
-              req.url
-            );
           });
         },
       },
