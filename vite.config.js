@@ -26,14 +26,6 @@ export default defineConfig({
         globals: {
           "@editorjs/editorjs": "EditorJS",
         },
-        assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split(".");
-          const extType = info[info.length - 1];
-          if (/\.(png|jpe?g|gif|svg|webp)$/i.test(assetInfo.name)) {
-            return `img/[name][extname]`;
-          }
-          return `assets/[name][extname]`;
-        },
       },
     },
     sourcemap: true,
@@ -62,4 +54,17 @@ export default defineConfig({
       },
     },
   },
+  plugins: [
+    {
+      name: "vite-plugin-svg-string",
+      transform(code, id) {
+        if (id.endsWith(".svg")) {
+          return {
+            code: `export default ${JSON.stringify(code)}`,
+            map: null,
+          };
+        }
+      },
+    },
+  ],
 });
