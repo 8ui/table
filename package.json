@@ -1,7 +1,7 @@
 {
   "name": "@8ui/editorjs-resizable-table",
   "description": "Resizable table for Editor.js",
-  "version": "0.1.24",
+  "version": "0.1.25",
   "license": "MIT",
   "main": "./dist/bundle.umd.js",
   "module": "./dist/bundle.mjs",
