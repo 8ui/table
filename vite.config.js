@@ -3,6 +3,7 @@ import { resolve } from "path";
 import multer from "multer";
 import uploadImage from "./node/uploadImage";
 import express from "express";
+import fs from "fs";
 
 const app = express();
 const upload = multer({
@@ -57,10 +58,25 @@ export default defineConfig({
   plugins: [
     {
       name: "vite-plugin-svg-string",
+      enforce: "pre",
       transform(code, id) {
         if (id.endsWith(".svg")) {
+          const svgContent = fs.readFileSync(id, "utf-8");
           return {
-            code: `export default ${JSON.stringify(code)}`,
+            code: `export default ${JSON.stringify(svgContent)}`,
+            map: null,
+          };
+        }
+      },
+    },
+    {
+      name: "vite-plugin-raw",
+      transform(code, id) {
+        if (id.endsWith("?raw")) {
+          const filePath = id.replace("?raw", "");
+          const content = fs.readFileSync(filePath, "utf-8");
+          return {
+            code: `export default ${JSON.stringify(content)}`,
             map: null,
           };
         }

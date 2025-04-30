@@ -1,6 +1,6 @@
 import { create } from "./documentUtils";
-import imageUploadIcon from "./img/image-upload.svg";
-import imageDeleteIcon from "./img/image-delete.svg";
+import imageUploadIcon from "./img/image-upload.svg?raw";
+import imageDeleteIcon from "./img/image-delete.svg?raw";
 import "./styles/image-upload.scss";
 
 const IMAGE_UPLOAD_URL = "/upload_image";
