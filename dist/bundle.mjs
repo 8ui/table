@@ -160,7 +160,7 @@ class O {
     this.table = t;
   }
 }
-const x = "data:image/svg+xml,%3csvg%20viewBox='0%200%2024%2024'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M19%205V19H5V5H19ZM19%203H5C3.9%203%203%203.9%203%205V19C3%2020.1%203.9%2021%205%2021H19C20.1%2021%2021%2020.1%2021%2019V5C21%203.9%2020.1%203%2019%203ZM14.14%2011.86L11.14%2015.73L9%2013.14L6%2017H18L14.14%2011.86Z'%20/%3e%3c/svg%3e", z = "data:image/svg+xml,%3csvg%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M19%205V16.17L21%2018.17V5C21%203.9%2020.1%203%2019%203H5.83L7.83%205H19ZM2.81%202.81L1.39%204.22L3%205.83V19C3%2020.1%203.9%2021%205%2021H18.17L19.78%2022.61L21.19%2021.2L2.81%202.81ZM5%2019V7.83L12.07%2014.9L11.25%2016L9%2013L6%2017H14.17L16.17%2019H5Z'/%3e%3c/svg%3e", M = "/upload_image", g = {
+const x = new URL("data:image/svg+xml,%3csvg%20viewBox='0%200%2024%2024'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M19%205V19H5V5H19ZM19%203H5C3.9%203%203%203.9%203%205V19C3%2020.1%203.9%2021%205%2021H19C20.1%2021%2021%2020.1%2021%2019V5C21%203.9%2020.1%203%2019%203ZM14.14%2011.86L11.14%2015.73L9%2013.14L6%2017H18L14.14%2011.86Z'%20/%3e%3c/svg%3e", import.meta.url).href, z = new URL("data:image/svg+xml,%3csvg%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M19%205V16.17L21%2018.17V5C21%203.9%2020.1%203%2019%203H5.83L7.83%205H19ZM2.81%202.81L1.39%204.22L3%205.83V19C3%2020.1%203.9%2021%205%2021H18.17L19.78%2022.61L21.19%2021.2L2.81%202.81ZM5%2019V7.83L12.07%2014.9L11.25%2016L9%2013L6%2017H14.17L16.17%2019H5Z'/%3e%3c/svg%3e", import.meta.url).href, M = "/upload_image", g = {
   imageUploadButton: "tc-table__image_upload_button",
   imageUploadButtonVisible: "tc-table__image_upload_button_visible",
   image: "tc-table__image",
@@ -510,18 +510,18 @@ class k {
    * @return {{rows: number, cols: number}} - number of cols and rows
    */
   _resizeTable(t, e) {
-    const i = Array.isArray(t.content), s = i ? t.content.length : !1, n = i ? t.content.length : void 0, m = s ? t.content[0].length : void 0, d = Number.parseInt(e.rows), p = Number.parseInt(e.cols), b = !isNaN(d) && d > 0 ? d : void 0, v = !isNaN(p) && p > 0 ? p : void 0, { settings: h } = t, C = 3, c = 2, f = n || b || C, E = m || v || c;
-    for (let _ = 0; _ < f; _++)
-      this._table.addRow(_);
-    for (let _ = 0; _ < E; _++)
-      this._table.addColumn(_);
-    return h && h.sizes && h.sizes.forEach((_, B) => {
-      this._table.colgroup.children[B] && (this._table.colgroup.children[B].style.width = `${_ * 100}%`);
+    const i = Array.isArray(t.content), s = i ? t.content.length : !1, n = i ? t.content.length : void 0, m = s ? t.content[0].length : void 0, d = Number.parseInt(e.rows), p = Number.parseInt(e.cols), b = !isNaN(d) && d > 0 ? d : void 0, v = !isNaN(p) && p > 0 ? p : void 0, { settings: h } = t, C = 3, c = 2, _ = n || b || C, E = m || v || c;
+    for (let f = 0; f < _; f++)
+      this._table.addRow(f);
+    for (let f = 0; f < E; f++)
+      this._table.addColumn(f);
+    return h && h.sizes && h.sizes.forEach((f, B) => {
+      this._table.colgroup.children[B] && (this._table.colgroup.children[B].style.width = `${f * 100}%`);
     }), this._table.htmlElement.classList.toggle(
       this._CSS.withBorder,
       (h == null ? void 0 : h.withBorder) === void 0 ? !0 : h == null ? void 0 : h.withBorder
     ), {
-      rows: f,
+      rows: _,
       cols: E
     };
   }
@@ -576,8 +576,8 @@ class k {
     i === 1 && (i = e.sectionRowIndex + 1), this._table.addRow(i).cells[0].click();
   }
 }
-const $ = "data:image/svg+xml,%3csvg%20width='18'%20height='14'%3e%3cpath%20d='M2.833%208v1.95a1.7%201.7%200%200%200%201.7%201.7h3.45V8h-5.15zm0-2h5.15V2.35h-3.45a1.7%201.7%200%200%200-1.7%201.7V6zm12.3%202h-5.15v3.65h3.45a1.7%201.7%200%200%200%201.7-1.7V8zm0-2V4.05a1.7%201.7%200%200%200-1.7-1.7h-3.45V6h5.15zM4.533.1h8.9a3.95%203.95%200%200%201%203.95%203.95v5.9a3.95%203.95%200%200%201-3.95%203.95h-8.9a3.95%203.95%200%200%201-3.95-3.95v-5.9A3.95%203.95%200%200%201%204.533.1z'/%3e%3c/svg%3e", F = "data:image/svg+xml,%3csvg%20width='18'%20height='18'%20viewBox='0%200%2018%2018'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M0%202V8V10V16V18H2H8H10H16H18V16V10V8V2V0H16H10H8H2H0V2ZM8%202L2%202V8H8L8%202ZM8%2010H2V16H8L8%2010ZM10%2016V10H16V16H10ZM10%208V2L16%202V8H10Z'/%3e%3c/svg%3e";
-class U {
+const $ = "data:image/svg+xml,%3csvg%20width='18'%20height='14'%3e%3cpath%20d='M2.833%208v1.95a1.7%201.7%200%200%200%201.7%201.7h3.45V8h-5.15zm0-2h5.15V2.35h-3.45a1.7%201.7%200%200%200-1.7%201.7V6zm12.3%202h-5.15v3.65h3.45a1.7%201.7%200%200%200%201.7-1.7V8zm0-2V4.05a1.7%201.7%200%200%200-1.7-1.7h-3.45V6h5.15zM4.533.1h8.9a3.95%203.95%200%200%201%203.95%203.95v5.9a3.95%203.95%200%200%201-3.95%203.95h-8.9a3.95%203.95%200%200%201-3.95-3.95v-5.9A3.95%203.95%200%200%201%204.533.1z'/%3e%3c/svg%3e", U = "data:image/svg+xml,%3csvg%20width='18'%20height='18'%20viewBox='0%200%2018%2018'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20fill-rule='evenodd'%20clip-rule='evenodd'%20d='M0%202V8V10V16V18H2H8H10H16H18V16V10V8V2V0H16H10H8H2H0V2ZM8%202L2%202V8H8L8%202ZM8%2010H2V16H8L8%2010ZM10%2016V10H16V16H10ZM10%208V2L16%202V8H10Z'/%3e%3c/svg%3e";
+class N {
   /**
    * Render plugin`s main Element and fill it with saved data
    *
@@ -665,15 +665,15 @@ class U {
         (c) => c.querySelector("." + this._CSS.input)
       ), h = b.map(
         (c) => c.querySelector("." + g.image)
-      ), C = b.map((c, f) => {
-        if (v[f]) return { type: "input", text: v[f].innerHTML };
-        if (h[f])
-          return { type: "image", src: h[f].getAttribute("src") };
+      ), C = b.map((c, _) => {
+        if (v[_]) return { type: "input", text: v[_].innerHTML };
+        if (h[_])
+          return { type: "image", src: h[_].getAttribute("src") };
       });
       d === 0 && b.forEach((c) => {
         n.push(c.offsetWidth / m);
       }), i.push(
-        C.map((c, f) => {
+        C.map((c, _) => {
           if (c)
             switch (c.type) {
               case "input":
@@ -708,12 +708,12 @@ class U {
    */
   renderSettings() {
     const t = document.createElement("DIV"), e = document.createElement("SPAN");
-    return e.classList.add(this._CSS.settingsButton), this.borderActive && e.classList.add(this._CSS.settingsButtonActive), e.innerHTML = F, e.dataset.active = this.borderActive, e.addEventListener("click", () => {
+    return e.classList.add(this._CSS.settingsButton), this.borderActive && e.classList.add(this._CSS.settingsButtonActive), e.innerHTML = U, e.dataset.active = this.borderActive, e.addEventListener("click", () => {
       this.toggleBorder();
     }), t.appendChild(e), this.toggleBorderButton = e, t;
   }
 }
 export {
-  U as default
+  N as default
 };
 //# sourceMappingURL=bundle.mjs.map
