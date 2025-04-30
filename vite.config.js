@@ -20,7 +20,21 @@ export default defineConfig({
       fileName: "bundle",
       formats: ["umd"],
     },
+    rollupOptions: {
+      external: ["@editorjs/editorjs"],
+      output: {
+        globals: {
+          "@editorjs/editorjs": "EditorJS",
+        },
+      },
+    },
     sourcemap: true,
+    assetsInlineLimit: 0,
+  },
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "src"),
+    },
   },
   server: {
     port: 9000,
@@ -43,13 +57,6 @@ export default defineConfig({
             );
           });
         },
-      },
-    },
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "./src/styles/main.scss";`,
       },
     },
   },

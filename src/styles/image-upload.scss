@@ -24,7 +24,7 @@
       box-shadow: 0 0 20px rgba(black, 0.5);
     }
     &:before {
-      content: '';
+      content: "";
       display: block;
       padding-bottom: 100%;
     }
@@ -65,17 +65,17 @@
       border: none;
       border-radius: 8px;
       background-color: white;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
       transition: box-shadow 0.2s ease;
       &:hover {
-        box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
         background-color: #368be6;
         svg {
           color: white;
         }
       }
       &:hover {
-        box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+        box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
       }
       svg {
         color: #368be6;
