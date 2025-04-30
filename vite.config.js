@@ -18,7 +18,7 @@ export default defineConfig({
       entry: resolve(__dirname, "src/plugin.js"),
       name: "Table",
       fileName: "bundle",
-      formats: ["umd"],
+      formats: ["umd", "es"],
     },
     rollupOptions: {
       external: ["@editorjs/editorjs"],

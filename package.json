@@ -4,8 +4,7 @@
   "version": "0.1.24",
   "license": "MIT",
   "main": "./dist/bundle.umd.js",
-  "module": "./dist/bundle.es.js",
-  "types": "./dist/index.d.ts",
+  "module": "./dist/bundle.mjs",
   "files": [
     "dist",
     "src"
